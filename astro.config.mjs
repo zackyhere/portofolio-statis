@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://zackyhere.github.io/',
+    site: 'https://zackyhere.github.io/portofolio-statis',
     base: '/',
 });
