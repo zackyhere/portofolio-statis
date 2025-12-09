@@ -1,0 +1,90 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import { navMenus, siteTitle } from '../data/siteData.js';
+
+const { title = siteTitle, activePage = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script is:inline src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="dark-mode">
+
+    <header id="main-header">
+
+        <div class="header-inner">
+            <div class="brand">M.Maulida Zacky</div>
+
+            <nav class="nav-desktop">
+                {navMenus.map((menu) => (
+                    <a href={menu.url} class={`nav-link ${activePage === menu.url ? 'active' : ''}`}>
+                        {menu.name}
+                    </a>
+                ))}
+            </nav>
+
+            <div class="controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                    <i data-feather="sun"></i>
+                </button>
+
+                <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"
+                    aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu-dropdown" id="mobile-menu">
+            <Sidebar activePage={activePage} />
+        </div>
+
+    </header>
+
+    <slot />
+
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem;">
+        &copy; 2025 zackyhere. All rights reserved.
+    </footer>
+
+    <script is:inline>
+        feather.replace();
+
+        const hamburgerBtn = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const headerElement = document.getElementById('main-header');
+
+        if (hamburgerBtn && mobileMenu && headerElement) { // Safety check
+            hamburgerBtn.addEventListener('click', () => {
+                const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+
+                hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+                hamburgerBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('open');
+
+                headerElement.classList.toggle('menu-open');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!headerElement.contains(e.target) && mobileMenu.classList.contains('open')) {
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    hamburgerBtn.classList.remove('active');
+                    mobileMenu.classList.remove('open');
+                    headerElement.classList.remove('menu-open');
+                }
+            });
+        }
+    </script>
+    
+    <script is:inline src="/js/script.js"></script>
+</body>
+</html>

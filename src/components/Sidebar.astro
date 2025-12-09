@@ -1,0 +1,66 @@
+---
+import { navMenus } from '../data/siteData.js';
+
+const { activePage } = Astro.props;
+---
+
+{navMenus.map((menu) => (
+    <a href={menu.url} class={`mobile-nav-link ${activePage === menu.url ? 'active' : ''}`}>
+        {menu.name}
+    </a>
+))}
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const desktopLinks = document.querySelectorAll(".nav-link");
+        const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+        const allLinks = [...desktopLinks, ...mobileLinks];
+
+        const sections = [];
+
+        allLinks.forEach(link => {
+            const href = link.getAttribute("href");
+            if (href && (href.startsWith("#") || href.startsWith("/#"))) {
+                const id = href.replace("/#", "").replace("#", "");
+                const section = document.getElementById(id);
+                if (section) sections.push({ id, section });
+            }
+        });
+
+        function setActive(href) {
+            allLinks.forEach(l => l.classList.remove("active"));
+            allLinks.forEach(l => {
+                if (l.getAttribute("href") === href) {
+                    l.classList.add("active");
+                }
+            });
+        }
+
+        allLinks.forEach(link => {
+            link.addEventListener("click", function () {
+                const href = this.getAttribute("href");
+                setActive(href);
+            });
+        });
+
+        if (!window.location.hash) {
+            setActive("/#");
+        }
+
+        window.addEventListener("scroll", () => {
+            let current = null;
+
+            sections.forEach(({ id, section }) => {
+                const top = section.offsetTop - 120;
+                if (scrollY >= top) {
+                    current = id;
+                }
+            });
+
+            if (current) {
+                setActive(`/#${current}`);
+                setActive(`#${current}`);
+            }
+        });
+    });
+</script>

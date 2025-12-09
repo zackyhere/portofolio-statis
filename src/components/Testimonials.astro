@@ -1,0 +1,92 @@
+<div id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h1>Testimonials</h1>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Amazing work and great communication. Would definitely recommend!"</p>
+                <p class="author">John Doe</p>
+                <p class="author-title">CEO, Tech Company</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Professional, reliable, and delivers on time. Highly satisfied!"</p>
+                <p class="author">Jane Smith</p>
+                <p class="author-title">Product Manager</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Exceptional quality and attention to detail. A pleasure to work with."</p>
+                <p class="author">Mike Johnson</p>
+                <p class="author-title">Designer</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Scoping the wrapper if necessary or just relying on standard css. 
+       Reusing styles from EJS but adapting for component usage. */
+    
+    .testimonials-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 20px;
+        /* Ensure it doesn't break flow if used as a section */
+    }
+    
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        text-align: center;
+        color: white;
+        margin-bottom: 50px;
+        font-size: 2.5em;
+    }
+    
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    
+    .testimonial-card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .stars {
+        color: #ffc107;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+    }
+    
+    .testimonial-text {
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    
+    .author {
+        font-weight: bold;
+        color: #667eea;
+    }
+    
+    .author-title {
+        color: #666;
+        font-size: 0.9em;
+    }
+</style>

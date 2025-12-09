@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import About from '../components/About.astro';
+import Business from '../components/Business.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Github from '../components/Github.astro';
+import Certificates from '../components/Certificates.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contacts from '../components/Contacts.astro';
+
+// BotWa is seemingly unused in the main flow or logic in home.ejs, 
+// but we can import it if needed. However, since it was empty and unconnected,
+// I will leave it out of the main flow unless requested. 
+// Use: <BotWa /> if needed.
+---
+
+<Layout title="Home" activePage="Beranda">
+    <main class="home-container">
+        <div class="content-wrapper">
+
+            <div class="text-section">
+
+                <div class="sub-heading">
+                    <span class="line-decor-left"></span>
+                    <span class="sub-text">Hallo</span>
+                </div>
+
+                <div class="main-heading-wrapper">
+                    <h1 class="main-title">Saya <br>Seorang Web Development</h1>
+                    <span class="line-decor-vertical"></span>
+                </div>
+
+                <p class="description">
+                    Nama Saya M. Maulida Zacky, developer yang menguasai pengembangan frontend dan backend, API, serta
+                    manajemen database. Saya membangun solusi digital yang scalable, aman, dan memiliki struktur
+                    arsitektur yang baik.
+                </p>
+
+                <a href="/document/CV M.Maulida Zacky.pdf" class="btn-download" role="button"
+                    aria-label="Download Curriculum Vitae" download="CV M.Maulida Zacky.pdf">
+                    Download CV
+                </a>
+            </div>
+
+            <div class="image-section">
+                <div class="image-wrapper">
+                    <img src="/image/hitam.png" alt="Portrait of developer" class="img-asset person-img img-light">
+                    <img src="/image/putih.png" alt="Portrait of developer" class="img-asset person-img img-dark">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="separator-line"></div>
+    <About />
+    
+    <div class="separator-line"></div>
+    <Business />
+    
+    <div class="separator-line"></div>
+    <Projects />
+    
+    <div class="separator-line"></div>
+    <Skills />
+    
+    <div class="separator-line"></div>
+    <Github />
+
+    <!-- Certificates was not in home.ejs but existed in nav, adding it here -->
+    <div class="separator-line"></div>
+    <Certificates />
+
+    <!-- Testimonials was not in home.ejs but existed in nav, adding it here -->
+    <div class="separator-line"></div>
+    <Testimonials />
+
+    <div class="separator-line"></div>
+    <Contacts />
+</Layout>
