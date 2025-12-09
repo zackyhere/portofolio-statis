@@ -1,73 +1,383 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Home | My Portfolio</title><link rel="stylesheet" href="/css/style.css"><script src="https://unpkg.com/feather-icons"></script><style>.testimonials-section[data-astro-cid-aadlzisc]{background:linear-gradient(135deg,#667eea,#764ba2);padding:40px 20px}.container[data-astro-cid-aadlzisc]{max-width:1000px;margin:0 auto}h1[data-astro-cid-aadlzisc]{text-align:center;color:#fff;margin-bottom:50px;font-size:2.5em}.testimonials-grid[data-astro-cid-aadlzisc]{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}.testimonial-card[data-astro-cid-aadlzisc]{background:#fff;padding:30px;border-radius:10px;box-shadow:0 10px 30px #0003;transition:transform .3s ease}.testimonial-card[data-astro-cid-aadlzisc]:hover{transform:translateY(-5px)}.stars[data-astro-cid-aadlzisc]{color:#ffc107;margin-bottom:15px;font-size:1.2em}.testimonial-text[data-astro-cid-aadlzisc]{color:#333;line-height:1.6;margin-bottom:20px;font-style:italic}.author[data-astro-cid-aadlzisc]{font-weight:700;color:#667eea}.author-title[data-astro-cid-aadlzisc]{color:#666;font-size:.9em}
-</style></head> <body class="dark-mode"> <header id="main-header"> <div class="header-inner"> <div class="brand">M.Maulida Zacky</div> <nav class="nav-desktop"> <a href="/#" class="nav-link "> Beranda </a><a href="#about" class="nav-link "> Tentang </a><a href="#business" class="nav-link "> Bisnis </a><a href="#projects" class="nav-link "> Projek </a><a href="#skills" class="nav-link "> Keahlian </a><a href="#github" class="nav-link "> Github </a><a href="#certificates" class="nav-link "> Certificates </a><a href="#testimonials" class="nav-link "> Testimoni </a><a href="#contacts" class="nav-link "> Kontak </a> </nav> <div class="controls"> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme"> <i data-feather="sun"></i> </button> <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"> <span></span> <span></span> <span></span> </button> </div> </div> <div class="mobile-menu-dropdown" id="mobile-menu"> <a href="/#" class="mobile-nav-link ">Beranda</a><a href="#about" class="mobile-nav-link ">Tentang</a><a href="#business" class="mobile-nav-link ">Bisnis</a><a href="#projects" class="mobile-nav-link ">Projek</a><a href="#skills" class="mobile-nav-link ">Keahlian</a><a href="#github" class="mobile-nav-link ">Github</a><a href="#certificates" class="mobile-nav-link ">Certificates</a><a href="#testimonials" class="mobile-nav-link ">Testimoni</a><a href="#contacts" class="mobile-nav-link ">Kontak</a><script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const desktopLinks = document.querySelectorAll(".nav-link");
-        const mobileLinks = document.querySelectorAll(".mobile-nav-link");
-        const allLinks = [...desktopLinks, ...mobileLinks];
+<!DOCTYPE html>
+<html lang="en">
 
-        const sections = [];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | My Portfolio</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="/_astro/index.BnExjJ0e.css">
+</head>
 
-        allLinks.forEach(link => {
-            const href = link.getAttribute("href");
-            if (href && (href.startsWith("#") || href.startsWith("/#"))) {
-                const id = href.replace("/#", "").replace("#", "");
-                const section = document.getElementById(id);
-                if (section) sections.push({ id, section });
-            }
-        });
+<body class="dark-mode">
+    <header id="main-header">
+        <div class="header-inner">
+            <div class="brand">M.Maulida Zacky</div>
+            <nav class="nav-desktop"> <a href="/#" class="nav-link "> Beranda </a><a href="#about" class="nav-link ">
+                    Tentang </a><a href="#business" class="nav-link "> Bisnis </a><a href="#projects" class="nav-link ">
+                    Projek </a><a href="#skills" class="nav-link "> Keahlian </a><a href="#github" class="nav-link ">
+                    Github </a><a href="#certificates" class="nav-link "> Certificates </a><a href="#testimonials"
+                    class="nav-link "> Testimoni </a><a href="#contacts" class="nav-link "> Kontak </a> </nav>
+            <div class="controls"> <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme"> <i
+                        data-feather="sun"></i> </button> <button class="hamburger" id="hamburger" aria-label="Menu"
+                    aria-expanded="false" aria-controls="mobile-menu"> <span></span> <span></span> <span></span>
+                </button> </div>
+        </div>
+        <div class="mobile-menu-dropdown" id="mobile-menu"> <a href="/#" class="mobile-nav-link ">Beranda</a><a
+                href="#about" class="mobile-nav-link ">Tentang</a><a href="#business"
+                class="mobile-nav-link ">Bisnis</a><a href="#projects" class="mobile-nav-link ">Projek</a><a
+                href="#skills" class="mobile-nav-link ">Keahlian</a><a href="#github"
+                class="mobile-nav-link ">Github</a><a href="#certificates" class="mobile-nav-link ">Certificates</a><a
+                href="#testimonials" class="mobile-nav-link ">Testimoni</a><a href="#contacts"
+                class="mobile-nav-link ">Kontak</a>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const desktopLinks = document.querySelectorAll(".nav-link");
+                    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+                    const allLinks = [...desktopLinks, ...mobileLinks];
 
-        function setActive(href) {
-            allLinks.forEach(l => l.classList.remove("active"));
-            allLinks.forEach(l => {
-                if (l.getAttribute("href") === href) {
-                    l.classList.add("active");
-                }
-            });
-        }
+                    const sections = [];
 
-        allLinks.forEach(link => {
-            link.addEventListener("click", function () {
-                const href = this.getAttribute("href");
-                setActive(href);
-            });
-        });
+                    allLinks.forEach(link => {
+                        const href = link.getAttribute("href");
+                        if (href && (href.startsWith("#") || href.startsWith("/#"))) {
+                            const id = href.replace("/#", "").replace("#", "");
+                            const section = document.getElementById(id);
+                            if (section) sections.push({ id, section });
+                        }
+                    });
 
-        if (!window.location.hash) {
-            setActive("/#");
-        }
+                    function setActive(href) {
+                        allLinks.forEach(l => l.classList.remove("active"));
+                        allLinks.forEach(l => {
+                            if (l.getAttribute("href") === href) {
+                                l.classList.add("active");
+                            }
+                        });
+                    }
 
-        window.addEventListener("scroll", () => {
-            let current = null;
+                    allLinks.forEach(link => {
+                        link.addEventListener("click", function () {
+                            const href = this.getAttribute("href");
+                            setActive(href);
+                        });
+                    });
 
-            sections.forEach(({ id, section }) => {
-                const top = section.offsetTop - 120;
-                if (scrollY >= top) {
-                    current = id;
-                }
-            });
+                    if (!window.location.hash) {
+                        setActive("/#");
+                    }
 
-            if (current) {
-                setActive(`/#${current}`);
-                setActive(`#${current}`);
-            }
-        });
-    });
-</script> </div> </header>  <main class="home-container"> <div class="content-wrapper"> <div class="text-section"> <div class="sub-heading"> <span class="line-decor-left"></span> <span class="sub-text">Hallo</span> </div> <div class="main-heading-wrapper"> <h1 class="main-title">Saya <br>Seorang Web Development</h1> <span class="line-decor-vertical"></span> </div> <p class="description">
-Nama Saya M. Maulida Zacky, developer yang menguasai pengembangan frontend dan backend, API, serta
+                    window.addEventListener("scroll", () => {
+                        let current = null;
+
+                        sections.forEach(({ id, section }) => {
+                            const top = section.offsetTop - 120;
+                            if (scrollY >= top) {
+                                current = id;
+                            }
+                        });
+
+                        if (current) {
+                            setActive(`/#${current}`);
+                            setActive(`#${current}`);
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </header>
+    <main class="home-container">
+        <div class="content-wrapper">
+            <div class="text-section">
+                <div class="sub-heading"> <span class="line-decor-left"></span> <span class="sub-text">Hallo</span>
+                </div>
+                <div class="main-heading-wrapper">
+                    <h1 class="main-title">Saya <br>Seorang Web Development</h1> <span
+                        class="line-decor-vertical"></span>
+                </div>
+                <p class="description">
+                    Nama Saya M. Maulida Zacky, developer yang menguasai pengembangan frontend dan backend, API, serta
                     manajemen database. Saya membangun solusi digital yang scalable, aman, dan memiliki struktur
                     arsitektur yang baik.
-</p> <a href="/document/CV M.Maulida Zacky.pdf" class="btn-download" role="button" aria-label="Download Curriculum Vitae" download="CV M.Maulida Zacky.pdf">
-Download CV
-</a> </div> <div class="image-section"> <div class="image-wrapper"> <img src="/image/hitam.png" alt="Portrait of developer" class="img-asset person-img img-light"> <img src="/image/putih.png" alt="Portrait of developer" class="img-asset person-img img-dark"> </div> </div> </div> </main> <div class="separator-line"></div> <main role="main"> <div class="about-container" id="about"> <div class="about-photo-wrapper"> <img src="/image/pro.png" alt="Foto M. Maulida Zacky" class="about-photo"> </div> <div class="about-text-content"> <h1 class="about-title">Tentang Saya</h1> <p class="about-name">M.Maulida Zacky - Development</p> <div class="about-desc"> <p>Saya adalah seorang siswa tahun akhir di Sekolah Menengah Kejuruan (SMK) di Indonesia yang telah
-                    mendalami dunia pemrograman sejak SMP. Selama perjalanan tersebut, saya telah mempelajari berbagai
-                    bahasa pemrograman serta framework untuk pengembangan frontend dan backend, dan terus memperluas
-                    kemampuan dalam membangun aplikasi serta layanan berbasis web.</p> <p>Saya memiliki tekad kuat untuk terus mempelajari dan mengikuti perkembangan teknologi. Selain itu,
-                    saya memiliki jiwa kepemimpinan serta mampu bekerja secara efektif dan profesional dalam berbagai
-                    situasi.</p> <p>Daftar lengkap keterampilan dan teknologi yang saya kuasai dapat dilihat <a href="#skills" style="color: #3399ff;">disini.</a></p> </div> <div class="contact-grid"> <a href="https://maps.app.goo.gl/VbLMQjuuSVeffMs89" target="_blank" rel="noopener noreferrer" class="contact-card card-location" aria-label="Lihat alamat di Google Maps"> <span class="contact-card-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 11.5A2.5 2.5 0 019.5 9a2.5 2.5 0 015 0A2.5 2.5 0 0112 11.5zM12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#45b6fe"></path> </svg> </span> <span class="contact-card-text">Kediri, Indonesia</span> </a> <a href="mailto:zackyy425@gmail.com" class="contact-card card-gmail" aria-label="Kirim email ke maulidazacky@gmail.com"> <span class="contact-card-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#fff"></path> </svg> </span> <span class="contact-card-text">zackyy425@gmail.com</span> </a> <a href="https://wa.me/6281554269688" target="_blank" rel="noopener noreferrer" class="contact-card card-wa" aria-label="Hubungi via WhatsApp"> <span class="contact-card-icon"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bootstrap_whatsapp.svg/640px-Bootstrap_whatsapp.svg.png" alt="wa"> </span> <span class="contact-card-text">081554269688</span> </a> <a href="https://t.me/zackyy425" target="_blank" rel="noopener noreferrer" class="contact-card card-telegram" aria-label="Hubungi via Telegram"> <span class="contact-card-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.62 12c-.88-.24-.88-1.13 0-1.39l18.01-7.01c.78-.31 1.45.16 1.18 1.08l-3.27 15.37c-.29 1.26-1.11 1.56-2.01.96l-4.89-3.59-2.32 2.24c-.25.24-.46.46-.93.46z" fill="#fff"></path> </svg> </span> <span class="contact-card-text">@zackyy425</span> </a> </div> <a href="/document/CV M.Maulida Zacky.pdf" class="btn-download" role="button" aria-label="Download Curriculum Vitae" download="CV M.Maulida Zacky.pdf">
-Download CV
-</a> </div> </div> </main> <div class="separator-line"></div> <!-- Placeholder for Business component --><div id="business"></div> <div class="separator-line"></div> <!-- Placeholder for Projects component --><div id="projects"></div> <div class="separator-line"></div> <div class="skills-container" id="skills"> <div class="skills-header"> <h1>My Skills</h1> </div> <div class="skills-section"> <h2 class="section-title">Programming Languages & Frameworks</h2> <div class="skills-grid"> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5"> </div> <div class="skill-name">HTML</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3"> </div> <div class="skill-name">CSS</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS"> </div> <div class="skill-name">Tailwind CSS</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript"> </div> <div class="skill-name">JavaScript</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP"> </div> <div class="skill-name">PHP</div> </div> <div class="skill-card"> <div class="skill-badge" style="background-color: #f4f4f4;"> <img class="skill-logo" src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL"> </div> <div class="skill-name">MySQL</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js"> </div> <div class="skill-name">Node.js</div> </div> </div> </div> <div class="skills-section"> <h2 class="section-title">Design & Productivity</h2> <div class="skills-grid"> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"> </div> <div class="skill-name">Figma</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/en/b/bb/Canva_Logo.svg" alt="Canva"> </div> <div class="skill-name">Canva</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/1200px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png" alt="Excel"> </div> <div class="skill-name">Excel</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/1101px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png" alt="Word"> </div> <div class="skill-name">Word</div> </div> </div> </div> <div class="skills-section"> <h2 class="section-title">Version Control & Deployment</h2> <div class="skills-grid"> <div class="skill-card"> <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"> </div> <div class="skill-name">GitHub</div> </div> <div class="skill-card"> <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo" src="https://www.svgrepo.com/show/354512/vercel.svg" alt="Vercel"> </div> <div class="skill-name">Vercel</div> </div> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://www.svgrepo.com/show/353564/cloudflare.svg" alt="Cloudflare"> </div> <div class="skill-name">Cloudflare</div> </div> </div> </div> <div class="skills-section"> <h2 class="section-title">AI Tools</h2> <div class="skills-grid"> <div class="skill-card"> <div class="skill-badge"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT"> </div> <div class="skill-name">ChatGPT</div> </div> <div class="skill-card"> <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Google-gemini-icon.svg" alt="Gemini"> </div> <div class="skill-name">Gemini</div> </div> <div class="skill-card"> <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/DeepSeek-icon.svg/640px-DeepSeek-icon.svg.png" alt="DeepSeek"> </div> <div class="skill-name">DeepSeek</div> </div> <div class="skill-card"> <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Codicons_%E2%80%93_copilot-large.svg/640px-Codicons_%E2%80%93_copilot-large.svg.png" alt="Copilot"> </div> <div class="skill-name">GitHub Copilot</div> </div> </div> </div> </div> <div class="separator-line"></div> <!-- Placeholder for Github component --><div id="github"></div>  <div class="separator-line"></div> <!-- Placeholder for Certificates component --><div id="certificates"></div>  <div class="separator-line"></div> <div id="testimonials" class="testimonials-section" data-astro-cid-aadlzisc> <div class="container" data-astro-cid-aadlzisc> <h1 data-astro-cid-aadlzisc>Testimonials</h1> <div class="testimonials-grid" data-astro-cid-aadlzisc> <div class="testimonial-card" data-astro-cid-aadlzisc> <div class="stars" data-astro-cid-aadlzisc>★★★★★</div> <p class="testimonial-text" data-astro-cid-aadlzisc>"Amazing work and great communication. Would definitely recommend!"</p> <p class="author" data-astro-cid-aadlzisc>John Doe</p> <p class="author-title" data-astro-cid-aadlzisc>CEO, Tech Company</p> </div> <div class="testimonial-card" data-astro-cid-aadlzisc> <div class="stars" data-astro-cid-aadlzisc>★★★★★</div> <p class="testimonial-text" data-astro-cid-aadlzisc>"Professional, reliable, and delivers on time. Highly satisfied!"</p> <p class="author" data-astro-cid-aadlzisc>Jane Smith</p> <p class="author-title" data-astro-cid-aadlzisc>Product Manager</p> </div> <div class="testimonial-card" data-astro-cid-aadlzisc> <div class="stars" data-astro-cid-aadlzisc>★★★★★</div> <p class="testimonial-text" data-astro-cid-aadlzisc>"Exceptional quality and attention to detail. A pleasure to work with."</p> <p class="author" data-astro-cid-aadlzisc>Mike Johnson</p> <p class="author-title" data-astro-cid-aadlzisc>Designer</p> </div> </div> </div> </div>  <div class="separator-line"></div> <section class="contact-section" id="contacts"> <h5 class="section-label">contact me</h5> <div class="contact-container"> <h2 class="contact-title">Send me a message</h2> <form id="contactForm" class="contact-form" novalidate> <div class="form-group"> <input type="text" id="name" name="name" placeholder="Your name" required aria-label="Your name"> <span class="error-msg">Name is required</span> </div> <div class="form-group"> <input type="text" id="subject" name="subject" placeholder="Subject" aria-label="Subject"> </div> <div class="form-group"> <textarea id="message" name="message" placeholder="Write your message..." required aria-label="Message body"></textarea> <span class="error-msg">Please write a message</span> </div> <div class="method-selection"> <p class="method-label">Choose delivery method:</p> <div class="method-options"> <button type="button" class="method-btn active" data-method="wa" aria-label="Send via WhatsApp" aria-pressed="true"> <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"> <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path> </svg> </button> <button type="button" class="method-btn" data-method="telegram" aria-label="Send via Telegram" aria-pressed="false"> <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"> <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path> </svg> </button> <button type="button" class="method-btn" data-method="gmail" aria-label="Send via Gmail" aria-pressed="false"> <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"> <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path> </svg> </button> </div> </div> <button type="submit" class="send-btn"> <span>Send a message</span> <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <line x1="22" y1="2" x2="11" y2="13"></line> <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon> </svg> </button> </form> </div> </section>  <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem;">
-&copy; 2025 zackyhere. All rights reserved.
-</footer> <script>
+                </p> <a href="/document/CV M.Maulida Zacky.pdf" class="btn-download" role="button"
+                    aria-label="Download Curriculum Vitae" download="CV M.Maulida Zacky.pdf">
+                    Download CV
+                </a>
+            </div>
+            <div class="image-section">
+                <div class="image-wrapper"> <img src="/image/hitam.png" alt="Portrait of developer"
+                        class="img-asset person-img img-light"> <img src="/image/putih.png" alt="Portrait of developer"
+                        class="img-asset person-img img-dark"> </div>
+            </div>
+        </div>
+    </main>
+    <div class="separator-line"></div>
+    <main role="main">
+        <div class="about-container" id="about">
+            <div class="about-photo-wrapper"> <img src="/image/pro.png" alt="Foto M. Maulida Zacky" class="about-photo">
+            </div>
+            <div class="about-text-content">
+                <h1 class="about-title">Tentang Saya</h1>
+                <p class="about-name">M.Maulida Zacky - Development</p>
+                <div class="about-desc">
+                    <p>Saya adalah seorang siswa tahun akhir di Sekolah Menengah Kejuruan (SMK) di Indonesia yang telah
+                        mendalami dunia pemrograman sejak SMP. Selama perjalanan tersebut, saya telah mempelajari
+                        berbagai
+                        bahasa pemrograman serta framework untuk pengembangan frontend dan backend, dan terus memperluas
+                        kemampuan dalam membangun aplikasi serta layanan berbasis web.</p>
+                    <p>Saya memiliki tekad kuat untuk terus mempelajari dan mengikuti perkembangan teknologi. Selain
+                        itu,
+                        saya memiliki jiwa kepemimpinan serta mampu bekerja secara efektif dan profesional dalam
+                        berbagai
+                        situasi.</p>
+                    <p>Daftar lengkap keterampilan dan teknologi yang saya kuasai dapat dilihat <a href="#skills"
+                            style="color: #3399ff;">disini.</a></p>
+                </div>
+                <div class="contact-grid"> <a href="https://maps.app.goo.gl/VbLMQjuuSVeffMs89" target="_blank"
+                        rel="noopener noreferrer" class="contact-card card-location"
+                        aria-label="Lihat alamat di Google Maps"> <span class="contact-card-icon"> <svg
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 11.5A2.5 2.5 0 019.5 9a2.5 2.5 0 015 0A2.5 2.5 0 0112 11.5zM12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                                    fill="#45b6fe"></path>
+                            </svg> </span> <span class="contact-card-text">Kediri, Indonesia</span> </a> <a
+                        href="mailto:zackyy425@gmail.com" class="contact-card card-gmail"
+                        aria-label="Kirim email ke maulidazacky@gmail.com"> <span class="contact-card-icon"> <svg
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                                    fill="#fff"></path>
+                            </svg> </span> <span class="contact-card-text">zackyy425@gmail.com</span> </a> <a
+                        href="https://wa.me/6281554269688" target="_blank" rel="noopener noreferrer"
+                        class="contact-card card-wa" aria-label="Hubungi via WhatsApp"> <span class="contact-card-icon">
+                            <img class="skill-logo"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bootstrap_whatsapp.svg/640px-Bootstrap_whatsapp.svg.png"
+                                alt="wa"> </span> <span class="contact-card-text">081554269688</span> </a> <a
+                        href="https://t.me/zackyy425" target="_blank" rel="noopener noreferrer"
+                        class="contact-card card-telegram" aria-label="Hubungi via Telegram"> <span
+                            class="contact-card-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.62 12c-.88-.24-.88-1.13 0-1.39l18.01-7.01c.78-.31 1.45.16 1.18 1.08l-3.27 15.37c-.29 1.26-1.11 1.56-2.01.96l-4.89-3.59-2.32 2.24c-.25.24-.46.46-.93.46z"
+                                    fill="#fff"></path>
+                            </svg> </span> <span class="contact-card-text">@zackyy425</span> </a> </div> <a
+                    href="/document/CV M.Maulida Zacky.pdf" class="btn-download" role="button"
+                    aria-label="Download Curriculum Vitae" download="CV M.Maulida Zacky.pdf">
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </main>
+    <div class="separator-line"></div> <!-- Placeholder for Business component -->
+    <div id="business"></div>
+    <div class="separator-line"></div> <!-- Placeholder for Projects component -->
+    <div id="projects"></div>
+    <div class="separator-line"></div>
+    <div class="skills-container" id="skills">
+        <div class="skills-header">
+            <h1>My Skills</h1>
+        </div>
+        <div class="skills-section">
+            <h2 class="section-title">Programming Languages & Frameworks</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+                            alt="HTML5"> </div>
+                    <div class="skill-name">HTML</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+                            alt="CSS3"> </div>
+                    <div class="skill-name">CSS</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+                            alt="Tailwind CSS"> </div>
+                    <div class="skill-name">Tailwind CSS</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+                            alt="JavaScript"> </div>
+                    <div class="skill-name">JavaScript</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP"> </div>
+                    <div class="skill-name">PHP</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge" style="background-color: #f4f4f4;"> <img class="skill-logo"
+                            src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL"> </div>
+                    <div class="skill-name">MySQL</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js"> </div>
+                    <div class="skill-name">Node.js</div>
+                </div>
+            </div>
+        </div>
+        <div class="skills-section">
+            <h2 class="section-title">Design & Productivity</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"> </div>
+                    <div class="skill-name">Figma</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/en/b/bb/Canva_Logo.svg" alt="Canva"> </div>
+                    <div class="skill-name">Canva</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/1200px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png"
+                            alt="Excel"> </div>
+                    <div class="skill-name">Excel</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg/1101px-Microsoft_Office_Word_%282019%E2%80%932025%29.svg.png"
+                            alt="Word"> </div>
+                    <div class="skill-name">Word</div>
+                </div>
+            </div>
+        </div>
+        <div class="skills-section">
+            <h2 class="section-title">Version Control & Deployment</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                            alt="GitHub"> </div>
+                    <div class="skill-name">GitHub</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo"
+                            src="https://www.svgrepo.com/show/354512/vercel.svg" alt="Vercel"> </div>
+                    <div class="skill-name">Vercel</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://www.svgrepo.com/show/353564/cloudflare.svg" alt="Cloudflare"> </div>
+                    <div class="skill-name">Cloudflare</div>
+                </div>
+            </div>
+        </div>
+        <div class="skills-section">
+            <h2 class="section-title">AI Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-badge"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT">
+                    </div>
+                    <div class="skill-name">ChatGPT</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Google-gemini-icon.svg"
+                            alt="Gemini"> </div>
+                    <div class="skill-name">Gemini</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/DeepSeek-icon.svg/640px-DeepSeek-icon.svg.png"
+                            alt="DeepSeek"> </div>
+                    <div class="skill-name">DeepSeek</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-badge" style="background:#f4f4f4"> <img class="skill-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Codicons_%E2%80%93_copilot-large.svg/640px-Codicons_%E2%80%93_copilot-large.svg.png"
+                            alt="Copilot"> </div>
+                    <div class="skill-name">GitHub Copilot</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator-line"></div> <!-- Placeholder for Github component -->
+    <div id="github"></div>
+    <div class="separator-line"></div> <!-- Placeholder for Certificates component -->
+    <div id="certificates"></div>
+    <div class="separator-line"></div>
+    <div id="testimonials" class="testimonials-section" data-astro-cid-aadlzisc>
+        <div class="container" data-astro-cid-aadlzisc>
+            <h1 data-astro-cid-aadlzisc>Testimonials</h1>
+            <div class="testimonials-grid" data-astro-cid-aadlzisc>
+                <div class="testimonial-card" data-astro-cid-aadlzisc>
+                    <div class="stars" data-astro-cid-aadlzisc>★★★★★</div>
+                    <p class="testimonial-text" data-astro-cid-aadlzisc>"Amazing work and great communication. Would
+                        definitely recommend!"</p>
+                    <p class="author" data-astro-cid-aadlzisc>John Doe</p>
+                    <p class="author-title" data-astro-cid-aadlzisc>CEO, Tech Company</p>
+                </div>
+                <div class="testimonial-card" data-astro-cid-aadlzisc>
+                    <div class="stars" data-astro-cid-aadlzisc>★★★★★</div>
+                    <p class="testimonial-text" data-astro-cid-aadlzisc>"Professional, reliable, and delivers on time.
+                        Highly satisfied!"</p>
+                    <p class="author" data-astro-cid-aadlzisc>Jane Smith</p>
+                    <p class="author-title" data-astro-cid-aadlzisc>Product Manager</p>
+                </div>
+                <div class="testimonial-card" data-astro-cid-aadlzisc>
+                    <div class="stars" data-astro-cid-aadlzisc>★★★★★</div>
+                    <p class="testimonial-text" data-astro-cid-aadlzisc>"Exceptional quality and attention to detail. A
+                        pleasure to work with."</p>
+                    <p class="author" data-astro-cid-aadlzisc>Mike Johnson</p>
+                    <p class="author-title" data-astro-cid-aadlzisc>Designer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator-line"></div>
+    <section class="contact-section" id="contacts">
+        <h5 class="section-label">contact me</h5>
+        <div class="contact-container">
+            <h2 class="contact-title">Send me a message</h2>
+            <form id="contactForm" class="contact-form" novalidate>
+                <div class="form-group"> <input type="text" id="name" name="name" placeholder="Your name" required
+                        aria-label="Your name"> <span class="error-msg">Name is required</span> </div>
+                <div class="form-group"> <input type="text" id="subject" name="subject" placeholder="Subject"
+                        aria-label="Subject"> </div>
+                <div class="form-group"> <textarea id="message" name="message" placeholder="Write your message..."
+                        required aria-label="Message body"></textarea> <span class="error-msg">Please write a
+                        message</span> </div>
+                <div class="method-selection">
+                    <p class="method-label">Choose delivery method:</p>
+                    <div class="method-options"> <button type="button" class="method-btn active" data-method="wa"
+                            aria-label="Send via WhatsApp" aria-pressed="true"> <svg viewBox="0 0 24 24"
+                                fill="currentColor" width="24" height="24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+                                </path>
+                            </svg> </button> <button type="button" class="method-btn" data-method="telegram"
+                            aria-label="Send via Telegram" aria-pressed="false"> <svg viewBox="0 0 24 24"
+                                fill="currentColor" width="24" height="24">
+                                <path
+                                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z">
+                                </path>
+                            </svg> </button> <button type="button" class="method-btn" data-method="gmail"
+                            aria-label="Send via Gmail" aria-pressed="false"> <svg viewBox="0 0 24 24"
+                                fill="currentColor" width="24" height="24">
+                                <path
+                                    d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z">
+                                </path>
+                            </svg> </button> </div>
+                </div> <button type="submit" class="send-btn"> <span>Send a message</span> <svg width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg> </button>
+            </form>
+        </div>
+    </section>
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.8rem;">
+        &copy; 2025 zackyhere. All rights reserved.
+    </footer>
+    <script>
         feather.replace();
 
         const hamburgerBtn = document.getElementById('hamburger');
@@ -94,4 +404,15 @@ Download CV
                 }
             });
         }
-    </script> <script src="/js/script.js"></script> </body> </html>
+    </script>
+    <script type="module">document.addEventListener("DOMContentLoaded", () => { document.getElementById("hamburger"), document.getElementById("sidebar"); const o = document.getElementById("main-header"), e = document.getElementById("theme-toggle"), t = document.body, l = e.querySelector("svg"); localStorage.getItem("theme") === "light" && (t.classList.remove("dark-mode"), l.dataset.feather = "moon", feather.replace()), e.addEventListener("click", () => { t.classList.toggle("dark-mode"), t.classList.contains("dark-mode") ? (localStorage.setItem("theme", "dark"), e.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>', e.querySelector("svg").style.color = "var(--accent)") : (localStorage.setItem("theme", "light"), e.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>') }), window.addEventListener("scroll", () => { window.scrollY > 50 ? o.classList.add("scrolled") : o.classList.remove("scrolled") }) }); document.addEventListener("DOMContentLoaded", () => {
+            const o = document.querySelectorAll(".method-btn"), e = document.getElementById("contactForm"), t = document.getElementById("name"), l = document.getElementById("subject"), a = document.getElementById("message"); let i = "wa"; o.forEach(n => { n.addEventListener("click", () => { o.forEach(s => { s.classList.remove("active"), s.setAttribute("aria-pressed", "false") }), n.classList.add("active"), n.setAttribute("aria-pressed", "true"), i = n.dataset.method }) }), e.addEventListener("submit", n => {
+                n.preventDefault(), document.querySelectorAll(".form-group").forEach(y => y.classList.remove("error")); const s = t.value.trim(), m = l.value.trim(), u = a.value.trim(); let c = !0; if (s || (t.parentElement.classList.add("error"), c = !1), u || (a.parentElement.classList.add("error"), c = !1), !c) return; const g = `Name: ${s}
+Subject: ${m || "No Subject"}
+
+${u}`, d = encodeURIComponent(g), h = encodeURIComponent(m || "Inquiry from Portfolio"); let r = ""; switch (i) { case "wa": r = `https://wa.me/6281554269688?text=${d}`; break; case "telegram": r = `https://t.me/zackyy425?text=${d}`; break; case "gmail": r = `mailto:zackyy425@gmail.com?subject=${h}&body=${d}`; break }r && (window.location.href = r)
+            })
+        });</script>
+</body>
+
+</html>
