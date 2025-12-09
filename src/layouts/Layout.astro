@@ -1,6 +1,7 @@
 ---
 import Sidebar from '../components/Sidebar.astro';
 import { navMenus, siteTitle } from '../data/siteData.js';
+import '../styles/global.css';
 
 const { title = siteTitle, activePage = '' } = Astro.props;
 ---
@@ -11,7 +12,7 @@ const { title = siteTitle, activePage = '' } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} | My Portfolio</title>
-    <link rel="stylesheet" href="/css/style.css">
+
     <script is:inline src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -85,6 +86,6 @@ const { title = siteTitle, activePage = '' } = Astro.props;
         }
     </script>
     
-    <script is:inline src="/js/script.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>
